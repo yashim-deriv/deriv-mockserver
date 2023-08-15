@@ -1,0 +1,46 @@
+{
+    "session_id": "transfer",
+    "accounts": [
+        {
+            "account_category": "wallet",
+            "account_type": "doughflow",
+            "created_at": 1664784824,
+            "currency": "USD",
+            "balance": 10422.12,
+            "is_disabled": 0,
+            "is_virtual": 0,
+            "landing_company_name": "SVG",
+            "landing_company_shortcode": "SVG",
+            "loginid": "CRW1122",
+            "linked_to": [{"loginid": "CR1122", "platform": "dtrader" }],
+            "trading": {},
+            "email": "example@test.com",
+            "excluded_until": "",
+            "session_start": 1687144472,
+            "accepted_bch": 0,
+            "platform": "deriv"
+        },
+        {
+            "account_category": "trading",
+            "account_type": "dtrader",
+            "created_at": 1664784824,
+            "currency": "USD",
+            "balance": 100,
+            "is_disabled": 0,
+            "is_virtual": 1,
+            "landing_company_name": "SVG",
+            "landing_company_shortcode": "SVG",
+            "loginid": "CR1122",
+            "linked_to": [{"loginid": "CRW1122", "platform": "wallet" }],
+            "trading": {},
+            "email": "example@test.com",
+            "excluded_until": "",
+            "session_start": 1687144472,
+            "accepted_bch": 0,
+            "platform": "deriv"
+        }
+    ],
+    "wallet_migration_config": {
+        "status": "migrated"
+    }
+}

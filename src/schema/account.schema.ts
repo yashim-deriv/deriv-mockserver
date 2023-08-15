@@ -13,8 +13,6 @@ export type LinkedAccount = z.infer<typeof linked_account_schema>;
 
 export const linked_account_schema = z.object({
     loginid: z.string(),
-    account_category: z.enum(['trading', 'wallet']),
-    account_type: z.string(),
     platform: z.nativeEnum(Platform),
 });
 
@@ -29,7 +27,7 @@ export const account_schema = z
         is_virtual: z.number(),
         landing_company_name: z.string().regex(/(bvi|labuan|malta|maltainvest|svg|vanuatu)/),
         loginid: z.string().regex(/^(MX|MXW|MF|MFW|VRTC|VRW|MLT|MLTW|CR|CRW|FOG)[0-9]+$/),
-        linked_account: linked_account_schema,
+        linked_to: linked_account_schema,
         trading: z.any().optional(),
         token: z.string().optional(),
         // Full Account Details
