@@ -5,18 +5,16 @@ import tradingPlatformAccountsResponse from '../../response/trading-platform-acc
 export const tradingPlatformAccounts = async ({ data, ws }: InterceptedAPIHandler) => {
     const { trading_platform_accounts, platform, req_id } = data as TradingPlatformAccountsRequest;
 
-    if (platform === 'dxtrade') {
-        return ws.send(
-            JSON.stringify({
-                echo_req: {
-                    trading_platform_accounts,
-                    platform,
-                    req_id,
-                },
-                msg_type: 'trading_platform_accounts',
+    return ws.send(
+        JSON.stringify({
+            echo_req: {
+                trading_platform_accounts,
+                platform,
                 req_id,
-                trading_platform_accounts: tradingPlatformAccountsResponse,
-            })
-        );
-    }
+            },
+            msg_type: 'trading_platform_accounts',
+            req_id,
+            trading_platform_accounts: tradingPlatformAccountsResponse,
+        })
+    );
 };
