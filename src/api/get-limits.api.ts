@@ -5,41 +5,20 @@ export const getLimits = async ({ data, ws }: InterceptedAPIHandler) => {
 
     const response = {
         get_limits: {
-            daily_cumulative_amount_transfers: {
-                enabled: 1,
-            },
             daily_transfers: {
                 ctrader: {
-                    allowed: 10,
-                    available: 9,
-                    limit_type: 'count',
+                    allowed: '50000.00',
+                    available: '49500.00',
+                    minimum: '0.01',
                 },
                 derivez: {
                     allowed: '10000.00',
                     available: '9900.00',
                     limit_type: 'amount',
+                    minimum: '0.01',
                 },
-                /*                 "dtrade": {...},
-                "dxtrade": {...},
-                "internal": {... },
-                "mt5": {...},
-                "wallets": {...},
-                "virtual": {...} */
             },
-            per_transfer: {
-                ctrader: {
-                    mimimum: '0.01',
-                    maximum: '1000.00',
-                },
-                /*                 "derivez": {...},
-                "dtrade": {...},
-                "dxtrade": {...},
-                "internal": {... },
-                "mt5": {...},
-                "wallets": {...},
-                "virtual": {...} */
-            },
-            unauthenticated_transfers: {
+            unverified_transfers: {
                 crypto_to_crypto: {
                     allowed: '200.00',
                     available: '100:00',
@@ -53,13 +32,13 @@ export const getLimits = async ({ data, ws }: InterceptedAPIHandler) => {
                     available: '950.00',
                 },
             },
-            echo_req: {
-                get_limits: '<not shown>',
-                req_id,
-            },
-            msg_type: 'authorize',
+        },
+        echo_req: {
+            get_limits: '<not shown>',
             req_id,
         },
+        msg_type: 'authorize',
+        req_id,
     };
 
     ws.send(JSON.stringify(response));
