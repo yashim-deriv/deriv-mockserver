@@ -17,6 +17,7 @@ import { getAccountTypes } from '../api/get-account-types';
 import { tradingPlatformAccounts } from '../api/trading-platform-accounts';
 import { topupVirtual } from '../api/topup-virtual.api';
 import { getLimits } from '../api/get-limits.api';
+import { transferBetweenAccounts } from '../api/transfer-between-accounts';
 
 export const mockInterceptor = async (intercepted_args: InterceptedAPIHandler) => {
     const endpoint_type = getFirstMatchingKey(
@@ -53,6 +54,10 @@ export const mockInterceptor = async (intercepted_args: InterceptedAPIHandler) =
             return await topupVirtual(intercepted_args);
         case 'get_limits':
             return await getLimits(intercepted_args);
+        case 'transfer_between_accounts':
+            return await transferBetweenAccounts(intercepted_args);
+        case 'trading_platform_accounts':
+            return await tradingPlatformAccounts(intercepted_args);
         case 'account_security':
         case 'portfolio':
         case 'proposal_open_contract':
@@ -64,8 +69,6 @@ export const mockInterceptor = async (intercepted_args: InterceptedAPIHandler) =
         case 'transfer_between_accounts':
         case 'p2p_order_list':
         case 'get_financial_assessment':
-        case 'trading_platform_accounts':
-            return await tradingPlatformAccounts(intercepted_args);
         default:
             return await proxyInterceptor(intercepted_args);
     }
